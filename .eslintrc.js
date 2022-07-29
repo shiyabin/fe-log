@@ -23,5 +23,7 @@ module.exports = {
 			},
 		],
 		'linkbreak-style': ['off', 'windows'],
+		'new-cap': ['off'],
+		'require-jsdoc': ['off'],
 	},
 };

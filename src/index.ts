@@ -1,10 +1,15 @@
-import config from "@/config";
-import "reflect-metadata";
-import {createKoaServer} from "routing-controllers";
-import ConsoleController from "./controller/ConsoleController";
-const app=createKoaServer({
-	controllers:[ConsoleController]
-})
+import config from '@/config';
+import 'reflect-metadata';
+import { createKoaServer } from 'routing-controllers';
+import db from '@/db';
+import ConsoleController from './controller/ConsoleController';
+import cors from '@koa/cors';
 
-app.listen(config.server.port);
-
+const app = createKoaServer({
+	controllers: [ConsoleController],
+});
+app.use(cors());
+app.listen(config.server.port, () => {
+	db();
+	console.log(`Server is running on port ${config.server.port}`);
+});
